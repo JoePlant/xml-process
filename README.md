@@ -71,7 +71,7 @@ Xml: [Source](./doc/Examples/Consumable/ProcessFlow.xml)
 </ProcessFlow>
 ```
 
-![Output](./doc/Examples/Consumable/process-top-flow.png)
+![Consumable](./doc/Examples/Consumable/process-top-flow.png)
 
 #### Waste
 Waste flow for the process.
@@ -86,4 +86,4 @@ Xml: [Source](./doc/Examples/Waste/ProcessFlow.xml)
 </ProcessFlow>
 ```
 
-![Output](./doc/Examples/Consumable/process-top-flow.png)
+![Waste](./doc/Examples/Waste/process-top-flow.png)
