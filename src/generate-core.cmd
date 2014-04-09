@@ -13,12 +13,12 @@ if EXIST Working goto Working_exists
 mkdir Working
 :Working_exists
 
-if EXIST %output%\Graphs goto graphs_exists
-mkdir %output%\Graphs
-:graphs_exists
+rem if EXIST %output%\Graphs goto graphs_exists
+rem mkdir %output%\Graphs
+rem :graphs_exists
 
-del Working\Graphs\*.* /Q
-del %output%\Graphs\*.* /Q
+rem del Working\Graphs\*.* /Q
+rem del %output%\Graphs\*.* /Q
 
 set nxslt=..\lib\nxslt\nxslt.exe
 set graphviz=..\lib\GraphViz-2.30.1\bin
@@ -34,10 +34,14 @@ set xsltproc=..\lib\libxml\bin\xsltproc.exe
 @echo === Diagrams ===
 
 %nxslt% Working\model.xml StyleSheets\render-process.xslt -o Working\process-flow-tb.dotml direction=TB
+%nxslt% Working\model.xml StyleSheets\render-process.xslt -o Working\process-flow-lr.dotml direction=LR
 %nxslt% Working\process-flow-tb.dotml %dotml%\dotml2dot.xsl -o "Working\process-flow-tb.gv" 
+%nxslt% Working\process-flow-lr.dotml %dotml%\dotml2dot.xsl -o "Working\process-flow-lr.gv" 
 %graphviz%\dot.exe -Tpng "Working\process-flow-tb.gv"  -o "%output%\process-top-flow.png"
+%graphviz%\dot.exe -Tpng "Working\process-flow-lr.gv"  -o "%output%\process-left-flow.png"
 
 @echo   Generated: %output%\process-top-flow.png
+@echo   Generated: %output%\process-left-flow.png
 
 goto end
 

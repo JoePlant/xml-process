@@ -32,8 +32,48 @@
 		</dotml:graph>
 	</xsl:template>
 	
+	<xsl:template match='InputsView' mode='node'>
+		<xsl:if test='*'>
+			<dotml:sub-graph rank='source'>
+				<xsl:apply-templates select='*' mode='node'/>
+			</dotml:sub-graph>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match='ConsumablesView' mode='node'>
+		<xsl:if test='*'>
+			<dotml:sub-graph rank='source'>
+				<xsl:apply-templates select='*' mode='node'/>
+			</dotml:sub-graph>
+		</xsl:if>
+	</xsl:template>	
+
+	<xsl:template match='WasteView' mode='node'>
+		<xsl:if test='*'>
+			<dotml:sub-graph rank='sink'>
+				<xsl:apply-templates select='*' mode='node'/>
+			</dotml:sub-graph>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match='OutputsView' mode='node'>
+		<xsl:if test='*'>
+			<dotml:sub-graph rank='sink'>
+				<xsl:apply-templates select='*' mode='node'/>
+			</dotml:sub-graph>
+		</xsl:if>
+	</xsl:template>
+	
 	<xsl:template match='*' mode='node'>
 		<xsl:choose> 
+			<xsl:when test='string-length(@id) > 0 and */@id'>
+				<dotml:cluster id='{@id}' 
+					label='{@name}' labeljust='l' labelloc="t" 
+					style='filled' fillcolor='{$focus-bgcolor}' color="{$focus-color}" 
+					fontname="{$fontname}" fontcolor="{$focus-color}" fontsize="{$font-size-h2}"> 
+					<xsl:apply-templates select='*' mode='node'/>
+				</dotml:cluster>
+			</xsl:when>
 			<xsl:when test='@id'>
 				<xsl:call-template name='render-node'/>
 			</xsl:when>
