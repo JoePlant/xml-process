@@ -7,7 +7,6 @@
 		<Flow to='Smelter'/>
 	</Area>
 	<Area name='Smelter'>
-		<Consumable name='Water'/>
 		<Consumable name='Energy'/>
 		<Waste name='Slag'/>
 		<Output name='Product'/>
