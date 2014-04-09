@@ -52,4 +52,4 @@ echo Model=%model%
 echo OutputDir=%output%
 
 :end
-pause
+rem pause
