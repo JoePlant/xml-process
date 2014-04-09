@@ -42,7 +42,7 @@
 				</xsl:apply-templates>
 			</WasteView>
 			<AreasView>
-				<xsl:apply-templates select='$list-areas' >
+				<xsl:apply-templates select='/ProcessFlow/Area' >
 					<xsl:sort select='@name'/>
 				</xsl:apply-templates>
 			</AreasView>
@@ -51,51 +51,78 @@
 					<xsl:sort select='../@name'/>
 					<xsl:sort select='@to'/>
 				</xsl:apply-templates>
-
-				<xsl:for-each select='//Flow'>
-					<xsl:sort select='../@name'/>
-					<xsl:sort select='@to'/>
-					
-				</xsl:for-each>
 			</FlowsView>
 		</ProcessFlow>				
 	</xsl:template>
 
 	<xsl:template match='Input'>
 		<xsl:variable name='id' select='generate-id(.)'/>
-		<xsl:variable name='parent-id' select='generate-id(..)'/>
-		<Input id='{$id}' index='{position()}' name="{@name}" from='{$id}' to='{$parent-id}' />
+		<Input id='{$id}' index='{position()}' name="{@name}">
+			<xsl:for-each select="key('inputs-by-name', @name)">
+				<xsl:variable name='parent-id' select='generate-id(..)'/>
+				<Flow from ='{$id}' to='{$parent-id}' />
+			</xsl:for-each>
+		</Input>
 	</xsl:template>
 
 	<xsl:template match='Consumable'>
 		<xsl:variable name='id' select='generate-id(.)'/>
-		<xsl:variable name='parent-id' select='generate-id(..)'/>
-		<Consumable id='{$id}' index='{position()}' name="{@name}" from='{$id}' to='{$parent-id}'  />
+		<Consumable id='{$id}' index='{position()}' name="{@name}">
+			<xsl:for-each select="key('consumables-by-name', @name)">
+				<xsl:variable name='parent-id' select='generate-id(..)'/>
+				<Flow from ='{$id}' to='{$parent-id}' />
+			</xsl:for-each>
+		</Consumable>
 	</xsl:template>
 
 	<xsl:template match='Output'>
 		<xsl:variable name='id' select='generate-id(.)'/>
-		<xsl:variable name='parent-id' select='generate-id(..)'/>
-		<Output id='{$id}' index='{position()}' name="{@name}" from='{$parent-id}' to='{$id}' />
+		<Output id='{$id}' index='{position()}' name="{@name}">
+			<xsl:for-each select="key('outputs-by-name', @name)">
+				<xsl:variable name='parent-id' select='generate-id(..)'/>
+				<Flow from='{$parent-id}' to='{$id}'  />
+			</xsl:for-each>
+		</Output>
 	</xsl:template>
 
 	<xsl:template match='Waste'>
 		<xsl:variable name='id' select='generate-id(.)'/>
-		<xsl:variable name='parent-id' select='generate-id(..)'/>
-		<Waste id='{$id}' index='{position()}' name="{@name}" from='{$parent-id}' to='{$id}' />
+		<Waste id='{$id}' index='{position()}' name="{@name}">
+			<xsl:for-each select="key('waste-by-name', @name)">
+				<xsl:variable name='parent-id' select='generate-id(..)'/>
+				<Flow from='{$parent-id}' to='{$id}'  />
+			</xsl:for-each>
+		</Waste>
 	</xsl:template>
 	
 	<xsl:template match='Area'>
 		<xsl:variable name='id' select='generate-id(.)'/>
-		<Area id='{$id}' index='{position()}' name="{@name}" />
+		<xsl:choose>
+			<xsl:when test='Area'>
+				<Area id='{$id}' index='{position()}' name="{@name}" >
+					<xsl:apply-templates select='Area'/>
+				</Area>
+			</xsl:when>
+			<xsl:otherwise>
+				<Area id='{$id}' index='{position()}' name="{@name}" />
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
-	<xsl:template match='Flow'>
+	<xsl:template match='Flow[@to]'>
 		<xsl:variable name='id' select='generate-id(.)'/>
 		<xsl:variable name='parent-id' select='generate-id(..)'/>
 		<xsl:variable name='to-node' select="key('node-by-name', @to)[1]"/>
 		<Flow id='{$id}' index='{position()}' name="{concat(../@name, ' to ', @to)}" from="{$parent-id}" to="{generate-id($to-node)}" />
 	</xsl:template>
+
+	<xsl:template match='Flow[@from]'>
+		<xsl:variable name='id' select='generate-id(.)'/>
+		<xsl:variable name='parent-id' select='generate-id(..)'/>
+		<xsl:variable name='from-node' select="key('node-by-name', @from)[1]"/>
+		<Flow id='{$id}' index='{position()}' name="{concat(@from, ' to ', ../@name)}" from="{generate-id($from-node)}" to="{$parent-id}" />
+	</xsl:template>
+
 	
 	<xsl:template match="*">
 		<xsl:copy>
