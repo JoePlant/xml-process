@@ -20,7 +20,8 @@
 	<xsl:variable name='list-areas' select="//Area[count(. | key('areas-by-name', @name)[1]) = 1]" />	
 	
 	<xsl:template match='/'>
-		<ProcessFlow>
+		<ProcessFlow >
+			<xsl:apply-templates select="ProcessFlow/@*"/>
 			<InputsView>
 				<xsl:apply-templates select='$list-inputs' >
 					<xsl:sort select='@name'/>

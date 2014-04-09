@@ -6,8 +6,7 @@
 	<xsl:output method="xml" indent="yes" />
 	
 	<xsl:param name='direction'>LR</xsl:param>
-	<xsl:param name='title'>Process Flow</xsl:param>
-
+	
 	<xsl:include href='include-graphs-colours.xslt'/>
 	
 	<xsl:template match="/" >
@@ -15,7 +14,7 @@
 	</xsl:template>
 	
 	<xsl:template match="/ProcessFlow">
-		<dotml:graph file-name="flow" label="{$title}" rankdir="{$direction}" fontname="{$fontname}" fontsize="{$font-size-h1}" labelloc='t' >			
+		<dotml:graph file-name="flow" label="{@name}" rankdir="{$direction}" fontname="{$fontname}" fontsize="{$font-size-h1}" labelloc='t' >			
 			<xsl:apply-templates select='InputsView' mode='node'/>
 			<xsl:apply-templates select='OutputsView' mode='node'/>
 			<xsl:apply-templates select='ConsumablesView' mode='node'/>			
