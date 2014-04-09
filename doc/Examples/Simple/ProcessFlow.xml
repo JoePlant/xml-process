@@ -1,0 +1,9 @@
+<ProcessFlow>
+	<Area name='Site'>
+		<Input name='Ore'/>
+		<Waste name='Waste'/>
+		<Output name='Product'/>
+		<Consumable name='Water'/>
+		<Consumable name='Energy'/>
+	</Area>
+</ProcessFlow>
