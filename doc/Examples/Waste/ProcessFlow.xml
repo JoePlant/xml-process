@@ -1,0 +1,5 @@
+<ProcessFlow name='Example: Waste'>
+	<Area name='Site'>
+		<Waste name='Waste'/>
+	</Area>
+</ProcessFlow>
