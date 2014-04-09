@@ -1,0 +1,15 @@
+<ProcessFlow>
+	<Area name='Concentrator'>
+		<Input name='Ore'/>
+		<Consumable name='Water'/>
+		<Consumable name='Energy'/>
+		<Waste name='Waste'/>
+		<Flow to='Smelter'/>
+	</Area>
+	<Area name='Smelter'>
+		<Consumable name='Water'/>
+		<Consumable name='Energy'/>
+		<Waste name='Slag'/>
+		<Output name='Product'/>
+	</Area>
+</ProcessFlow>
