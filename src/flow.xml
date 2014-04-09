@@ -1,73 +1,91 @@
 <ProcessFlow>
-	<Area name='Inputs'>
-	<Area name='Shredding and Metal Separation'>
-		<Input name='Ropes'/>
-		<Waste name='Metals'/>
-		<Flow to='Waste Storage'/>
-	</Area>  
-	<Area name='Waste Storage'>
-		<Input name='Rejects'/>
-		<Flow to='Mixing'/>
-	</Area>
-	<Area name='Sludge Storage'>
-		<Input name='Sludge' />
-		<Flow to='Mixing' />
-		<Flow to='Primary Air' />
-	</Area>
-	</Area>
-	<Area name='Mixing'>
-		<Flow to='Fluidised Bed Incinerator'/>
-	</Area>
-	<Area name='Primary Air'>
-		<Flow to='Secondary Air Nozzles'/>
-	</Area>
-	<Area name='Secondary Air Nozzles'>
-		<Flow to='Fluidised Bed Incinerator'/>
-	</Area>
-	<Area name='Ammonium Hydroxide Storage'>
-		<Input name='Ammonium Hydroxide'/>
-		<Flow to='Fluidised Bed Incinerator'/>
-	</Area>
-	<Area name='Fluidised Bed Incinerator'>
-		<Consumable name='Natural Gas'/>
-		<Flow to='Waste Heat Boiler'/>
-		<Flow to='Debris Separator' />
-	</Area>
-	<Area name='Debris Separator'>
-		<Waste name='Debris'/>
-	</Area>
-	<Area name='Waste Heat Boiler'>
-		<Flow to='Ash Silo' />
-		<Flow to='ECO Boiler' />
-		<Area name='Heat Exchanger'>
-			<Flow to='Steam Drum' />
-			
+		<Area name='Shredding and Metal Separation'>
+			<Input name='Ropes'/>
+			<Waste name='Metals'/>
+			<Flow to='Waste Storage'/>
+		</Area>  
+		<Area name='Waste Storage'>
+			<Input name='Rejects'/>
+			<Flow to='Mixing'/>
 		</Area>
-	</Area>
-	<Area name='ECO Boiler'>
-		<Flow to='Ash Silo' />
-		<Flow to='Steam Drum'/>
-		<Flow to='Reactor' />
-	</Area>
-	<Area name='Reactor'>
-		<Flow to='Bag House' />
-	</Area>
-	<Area name='Bag House'>
-		<Flow to='Ash Silo' />
-		<Flow to='Secondary Air Nozzles' />
-	</Area>
-	<Area name='Boiler Feed Water Tank'>
-		<Flow to='ECO Boiler' />
-	</Area>
-	<Area name='Steam Drum'>
-		<Flow to='Waste Heat Boiler'/>
-		<Flow to='Heat Exchanger' />
-	</Area>
-	<Area name='Ash Silo'>
-		<Waste name='Ash'/>
-	</Area>
-	<Area name='Auxiliaries'>
-	<Consumable name='Water'/>
-	<Consumable name='Electrical Power'/>
-	</Area>
+		<Area name='Sludge Storage'>
+			<Input name='Sludge' />
+			<Flow to='Mixing' />
+			<Flow to='Primary Air' />
+		</Area>
+		<Area name='Primary Air'>
+			<Input name='Air' />
+			<Flow to='Secondary Air Nozzles'/>
+		</Area>
+		<Area name='Ammonium Hydroxide Storage'>
+			<Input name='Ammonium Hydroxide'/>
+			<Flow to='Fluidised Bed Incinerator'/>
+		</Area>
+		<Area name='Mixing'>
+			<Flow to='Fluidised Bed Incinerator'/>
+		</Area>
+		<Area name='Secondary Air Nozzles'>
+			<Flow to='Fluidised Bed Incinerator'/>
+		</Area>
+		<Area name='Fluidised Bed Incinerator'>
+			<Consumable name='Natural Gas'/>
+			<Flow to='Waste Heat Boiler'/>
+			<Flow to='Debris Separator' />
+		</Area>
+		<Area name='Debris Separator'>
+			<Waste name='Debris'/>
+		</Area>
+		<Area name='Waste Heat Boiler'>
+			<Flow to='Ash Silo' />
+			<Flow to='ECO Boiler' />
+			<Area name='Heat Exchanger'>
+				<Flow to='Steam Drum' />
+				<Flow from='Steam Drum' />
+				<Flow to='Superheater HE'/>
+			</Area>
+		</Area>
+		<Area name='ECO Boiler'>
+			<Area name='ECO Heat Exchanger'>
+				<Flow to='Steam Drum' />
+				<Flow from='Steam Drum' />
+			</Area>
+			<Flow to='Ash Silo' />
+			<Flow to='Reactor' />
+		</Area>
+		<Area name='External Superheater'>
+			<Area name='Superheater HE'>
+				<Flow to='Turbine' />
+			</Area>
+			<Input name='Air'/>
+		</Area>
+		<Area name='Reactor'>
+			<Flow to='Bag House' />
+		</Area>
+		<Area name='Steam Drum'>
+		</Area>
+		<Area name='Turbine'>
+			<Output name='Electricity'/>
+			<Flow to='Air Cooled Condenser'/>
+		</Area>
+		<Area name='Air Cooled Condenser'>
+			<Flow to='Condensate Tank'/>
+		</Area>
+		<Area name='Condensate Tank'>
+			<Input name='DEMIN Water'/>
+			<Flow to='Boiler Feed Water Tank'/>
+		</Area>
+		<Area name='Bag House'>
+			<Flow to='Ash Silo' />
+			<Flow to='Secondary Air Nozzles' />
+		</Area>
+		<Area name='Boiler Feed Water Tank'>
+			<Flow to='ECO Boiler' />
+		</Area>
+		<Area name='Ash Silo'>
+			<Waste name='Ash'/>
+		</Area>
+		<Area name='Auxiliaries'>
+			<Consumable name='Water'/>
+			<Consumable name='Electrical Power'/>
+		</Area>
 </ProcessFlow>
