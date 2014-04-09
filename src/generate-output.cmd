@@ -1,4 +1,4 @@
 echo off
-call generate-core Flow.xml .\Output
+call generate-core ProcessFlow.xml .\Output
 
 pause
