@@ -3,9 +3,9 @@ Examples
 
 Examples are provided for the following processes
 
-* Crude Oil
-* Gold
-* Magnetite
+* [Crude Oil](#crude-oil)
+* [Gold](#gold)
+* [Magnetite](#magnetite)
 
 ###[Crude Oil](./CrudeOil)
 
@@ -25,4 +25,4 @@ Source: [xml](./Gold/ProcessFlow.xml)
 
 Source: [xml](./CrudeOil/ProcessFlow.xml)
 
-![Process Flow Output](./Magnetite/process-top-flow.png)
+![Process Flow Output](./Magnetite/process-left-flow.png)
