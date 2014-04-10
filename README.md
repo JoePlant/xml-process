@@ -62,6 +62,7 @@ Source: [xml](./doc/Examples/CrudeOil/ProcessFlow.xml)
 ### Elements
 
 Input | Output | Consumable | Waste 
+------|--------|------------|-------
 ![Input](./doc/Examples/Input/process-top-flow.png) | ![Input](./doc/Examples/Output/process-top-flow.png) | ![Input](./doc/Examples/Consumable/process-top-flow.png) | ![Input](./doc/Examples/Waste/process-top-flow.png)
 
 
