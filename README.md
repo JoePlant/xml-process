@@ -3,6 +3,18 @@ xml-process
 
 A simple xml structure for representing process flows and is used to generate process flow diagrams.
 
+---
+* [Examples](#examples)
+	* [Crude Oil](#crude-oil)
+	* [Gold](#gold)
+	* [Magnetite](#magnetite)
+
+* [Elements](#elements)
+	* [Input](#input)
+	* [Output](#output)
+	* [Consumable](#output)
+	* [Waste](#waste)
+	
 Process Flow (top-bottom)          | Process flow (left-right)
 -----------------------------------|-----------------------------------
 ![Top Flow](./doc/Examples/MultiSite/process-top-flow.png) | ![Left Flow](./doc/Examples/MultiSite/process-left-flow.png)
@@ -26,7 +38,32 @@ Xml: [Source](./doc/Examples/MultiSite/ProcessFlow.xml)
 </ProcessFlow>
 ```
 ===
+
+### Examples
+###[Crude Oil](./doc/Examples/CrudeOil)
+
+Source: [xml](./doc/Examples/CrudeOil/ProcessFlow.xml)
+
+![Process Flow Output](./doc/Examples/CrudeOil/process-top-flow.png)
+
+===
+###[Gold](./doc/Examples/Gold)
+
+Source: [xml](./doc/Examples/Gold/ProcessFlow.xml)
+
+![Process Flow Output](./doc/Examples/Gold/process-top-flow.png)
+
+===
+###[Magnetite](./doc/Examples/Magnetite)
+
+Source: [xml](./doc/Examples/CrudeOil/ProcessFlow.xml)
+
+![Process Flow Output](./Magnetite/process-left-flow.png)
 ### Elements
+
+Input | Output | Consumable | Waste 
+![Input](./doc/Examples/Input/process-top-flow.png) | ![Input](./doc/Examples/Output/process-top-flow.png) | ![Input](./doc/Examples/Consumable/process-top-flow.png) | ![Input](./doc/Examples/Waste/process-top-flow.png)
+
 
 #### Input
 Input flow for the process.
