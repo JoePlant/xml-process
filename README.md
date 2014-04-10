@@ -56,9 +56,10 @@ Source: [xml](./doc/Examples/Gold/ProcessFlow.xml)
 ===
 ###[Magnetite](./doc/Examples/Magnetite)
 
-Source: [xml](./doc/Examples/CrudeOil/ProcessFlow.xml)
+Source: [xml](./doc/Examples/Magnetite/ProcessFlow.xml)
 
-![Process Flow Output](./Magnetite/process-left-flow.png)
+![Process Flow Output](./doc/Examples/Magnetite/process-left-flow.png)
+
 ### Elements
 
 Input | Output | Consumable | Waste 
