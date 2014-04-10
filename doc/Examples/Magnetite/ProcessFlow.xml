@@ -1,0 +1,22 @@
+<ProcessFlow name='Simple Magnetite Process'>
+	<Area name='Mining'>
+		<Input name='Ore'/>
+		<Flow to='Crushing and Grinding'/>
+	</Area>
+	<Area name='Crushing and Grinding'>
+		<Flow to='Concentration'/>
+	</Area>
+	<Area name='Concentration'>
+		<Flow to='Filtration'/>
+		<Waste name='Tailings'/>
+	</Area>
+	<Area name='Filtration'>
+		<Flow to='Pellet Plant'/>
+	</Area>
+	<Area name='Pellet Plant'>
+		<Flow to='Stockpile and Shipping'/>
+	</Area>
+	<Area name='Stockpile and Shipping'>
+		<Output name='Magnetite'/>
+	</Area>
+</ProcessFlow>

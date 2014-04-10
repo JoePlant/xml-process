@@ -114,7 +114,15 @@
 		<xsl:variable name='id' select='generate-id(.)'/>
 		<xsl:variable name='parent-id' select='generate-id(..)'/>
 		<xsl:variable name='to-node' select="key('node-by-name', @to)[1]"/>
-		<Flow id='{$id}' index='{position()}' name="{concat(../@name, ' to ', @to)}" from="{$parent-id}" to="{generate-id($to-node)}" />
+		<xsl:choose>
+			<xsl:when test='$to-node'>
+				<Flow id='{$id}' index='{position()}' name="{concat(../@name, ' to ', @to)}" from="{$parent-id}" to="{generate-id($to-node)}" />
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- @to does not reference an area -->
+				<Flow id='{$id}' index='{position()}' name="{concat(../@name, ' to ', @to)}" from="{$parent-id}" to="{@to}" />
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match='Flow[@from]'>

@@ -1,0 +1,41 @@
+<ProcessFlow name='Simple Gold Flow'>
+	<Area name='Gravity Circuit'>
+		<Input name='Ore'/>
+		<Waste name='Tailings'/>
+		<Flow to='Concentrate'/>
+	</Area>
+	<Area name='Concentrate'>
+		<Flow to='Free Gold'/>
+		<Flow to='Sulphide Gold'/>
+	</Area>
+	<Area name='Free Gold'>
+		<Output name='Dore Production' />
+	</Area>
+	<Area name='Sulphide Gold'>
+		<Flow to='Leaching' />
+	</Area>
+	<Area name='Leaching'>
+		<Flow to='Leach Gold in Solution' />
+		<Flow to='Leach Gold in Residue' />
+	</Area>
+	<Area name='Leach Gold in Solution'>
+		<Flow to='Wash Circuit' />
+	</Area>
+	<Area name='Leach Gold in Residue'>
+		<Flow to='Wash Circuit' />
+	</Area>
+	<Area name='Wash Circuit'>
+		<Flow to='Soluble Au Recovered' />
+		<Flow to='Soluble Au Lost with Residue' />
+		<Flow to='Gold in Residue'/>
+	</Area>
+	<Area name='Soluble Au Recovered'>
+		<Output name='Dore Production'/>
+	</Area>
+	<Area name='Soluble Au Lost with Residue'>
+		<Waste name='Tailings'/>
+	</Area>
+	<Area name='Gold in Residue'>
+		<Waste name='Tailings'/>
+	</Area>
+</ProcessFlow>
