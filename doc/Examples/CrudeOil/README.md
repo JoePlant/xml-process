@@ -3,7 +3,7 @@ Crude Oil Example
 
 An example showing the process flow output given the following 
 
-Source Diagram            | Process flow (left-right)
+Source Diagram            | Process flow 
 --------------------------|-----------------------------------
 ![Source](./Refining.png) | ![Process Flow Output](./process-top-flow.png)
 

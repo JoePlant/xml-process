@@ -1,9 +1,9 @@
 Gold Example
 ===========
 
-An example showing how gold flow output given the following 
+An example showing how gold flows through a process 
 
-####Process flow (left-right)
+####Process flow diagram
 ![Process Flow Output](./process-top-flow.png)
 
 Xml: [Source](./ProcessFlow.xml) 
