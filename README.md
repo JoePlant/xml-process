@@ -68,10 +68,13 @@ Source: [xml](./doc/Examples/Magnetite/ProcessFlow.xml)
 
 ### Elements
 
-Input | Output | Consumable | Waste | Flow | Link
-------|--------|------------|-------|------|------
-![Input](./doc/Examples/Input/process-top-flow.png) | ![Output](./doc/Examples/Output/process-top-flow.png) | ![Consumable](./doc/Examples/Consumable/process-top-flow.png) | ![Waste](./doc/Examples/Waste/process-top-flow.png) | ![Flow](./doc/Examples/Flow/process-top-flow.png) | ![Link](./doc/Examples/Link/process-top-flow.png)
+Input | Output | Consumable | Waste |
+------|--------|------------|-------|
+![Input](./doc/Examples/Input/process-top-flow.png) | ![Output](./doc/Examples/Output/process-top-flow.png) | ![Consumable](./doc/Examples/Consumable/process-top-flow.png) | ![Waste](./doc/Examples/Waste/process-top-flow.png) 
 
+Flow | Link
+-----|------
+![Flow](./doc/Examples/Flow/process-top-flow.png) | ![Link](./doc/Examples/Link/process-top-flow.png)
 
 #### Input
 Input flow for the process.
