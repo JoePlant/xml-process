@@ -1,4 +1,4 @@
-<ProcessFlow name='Link between 1 & 3'>
+<ProcessFlow name='Link between 1 &amp; 3'>
 	<Area name='Site 1'>
 		<Flow to='Site 2'/>
 	</Area>
