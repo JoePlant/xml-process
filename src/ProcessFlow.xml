@@ -38,19 +38,21 @@
 		<Area name='Waste Heat Boiler'>
 			<Flow to='Ash Silo' />
 			<Flow to='ECO Boiler' />
-			<Area name='Heat Exchanger'>
-				<Flow to='Steam Drum' />
-				<Flow from='Steam Drum' />
-				<Flow to='Superheater HE'/>
-			</Area>
+			<Link to='Heat Exchanger' />
+		</Area>
+		<Area name='Heat Exchanger'>
+			<Flow to='Steam Drum' />
+			<Flow from='Steam Drum' />
+			<Flow to='Superheater HE'/>
+		</Area>
+		<Area name='ECO Heat Exchanger'>
+			<Flow to='Steam Drum' />
+			<Flow from='Steam Drum' />
 		</Area>
 		<Area name='ECO Boiler'>
-			<Area name='ECO Heat Exchanger'>
-				<Flow to='Steam Drum' />
-				<Flow from='Steam Drum' />
-			</Area>
 			<Flow to='Ash Silo' />
 			<Flow to='Reactor' />
+			<Link to='ECO Heat Exchanger' />
 		</Area>
 		<Area name='External Superheater'>
 			<Area name='Superheater HE'>

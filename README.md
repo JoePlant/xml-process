@@ -14,6 +14,9 @@ A simple xml structure for representing process flows and is used to generate pr
 	* [Output](#output)
 	* [Consumable](#output)
 	* [Waste](#waste)
+	* [Flow](#flow)
+	* [Link](#link)
+	
 	
 Process Flow (top-bottom)          | Process flow (left-right)
 -----------------------------------|-----------------------------------
@@ -22,16 +25,19 @@ Process Flow (top-bottom)          | Process flow (left-right)
 Xml: [Source](./doc/Examples/MultiSite/ProcessFlow.xml) 
 ```xml
 <ProcessFlow>
-	<Area name='Concentrator'>
-		<Input name='Ore'/>
+	<Area name='Auxiliaries'>
 		<Consumable name='Water'/>
 		<Consumable name='Energy'/>
+		<Consumable name='Energy'/>
+		<Link to='Concentrator' />
+		<Link to='Smelter' />
+	</Area>
+	<Area name='Concentrator'>
+		<Input name='Ore'/>
 		<Waste name='Waste'/>
 		<Flow to='Smelter'/>
 	</Area>
 	<Area name='Smelter'>
-		<Consumable name='Water'/>
-		<Consumable name='Energy'/>
 		<Waste name='Slag'/>
 		<Output name='Product'/>
 	</Area>
@@ -62,9 +68,9 @@ Source: [xml](./doc/Examples/Magnetite/ProcessFlow.xml)
 
 ### Elements
 
-Input | Output | Consumable | Waste 
-------|--------|------------|-------
-![Input](./doc/Examples/Input/process-top-flow.png) | ![Input](./doc/Examples/Output/process-top-flow.png) | ![Input](./doc/Examples/Consumable/process-top-flow.png) | ![Input](./doc/Examples/Waste/process-top-flow.png)
+Input | Output | Consumable | Waste | Flow | Link
+------|--------|------------|-------|------|------
+![Input](./doc/Examples/Input/process-top-flow.png) | ![Output](./doc/Examples/Output/process-top-flow.png) | ![Consumable](./doc/Examples/Consumable/process-top-flow.png) | ![Waste](./doc/Examples/Waste/process-top-flow.png) | ![Flow](./doc/Examples/Flow/process-top-flow.png) | ![Link](./doc/Examples/Link/process-top-flow.png)
 
 
 #### Input
@@ -126,3 +132,50 @@ Xml: [Source](./doc/Examples/Waste/ProcessFlow.xml)
 ```
 
 ![Waste](./doc/Examples/Waste/process-top-flow.png)
+
+#### Flow
+Generic flow for the process.
+to or flow is required.
+
+ - to = Where the flow goes to (name of the area)
+ - from = Where the flow comes from (name of the area)
+ 
+Xml: [Source](./doc/Examples/Flow/ProcessFlow.xml)
+``` xml
+<ProcessFlow name='Example: Flow'>
+	<Area name='Site 1'>
+		<Flow to='Site 2'/>
+	</Area>
+	<Area name='Site 2'>
+		<Flow to='Site 3'/>
+	</Area>
+	<Area name='Site 3'>
+		<Flow from='Site 1'/>
+	</Area>	
+</ProcessFlow>
+```
+
+![Flow](./doc/Examples/Flow/process-top-flow.png)
+
+#### Link
+Link between the two areas.
+(@to or @from is required)
+ - to = Where the link goes to (name of the area)
+ - from = Where the link comes from (name of the area)
+ 
+Xml: [Source](./doc/Examples/Flow/ProcessFlow.xml)
+``` xml
+<ProcessFlow name='Example: Link between 1 and 3'>
+	<Area name='Site 1'>
+		<Flow to='Site 2'/>
+	</Area>
+	<Area name='Site 2'>
+		<Flow to='Site 3'/>
+	</Area>
+	<Area name='Site 3'>
+		<Link from='Site 1'/>
+	</Area>	
+</ProcessFlow>
+```
+
+![Link](./doc/Examples/Link/process-top-flow.png)

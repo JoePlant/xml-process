@@ -1,0 +1,9 @@
+<ProcessFlow name='Example: Flows between 1, 2 and 3'>
+	<Area name='Site 1'>
+		<Flow to='Site 2'/>
+	</Area>
+	<Area name='Site 2'>
+		<Flow to='Site 3'/>
+	</Area>
+	<Area name='Site 3'/>
+</ProcessFlow>

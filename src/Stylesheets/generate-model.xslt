@@ -10,6 +10,7 @@
 	<xsl:key name='outputs-by-name' match='Output' use='@name' />
 	<xsl:key name='flows-by-to' match='Flow' use='@to' />
 	<xsl:key name='areas-by-name' match='Area' use='@name' />
+	<xsl:key name='link-by-to' match='Link' use='@to' />
 
 	<xsl:key name='node-by-name' match='Area' use='@name' />
 		
@@ -53,6 +54,12 @@
 					<xsl:sort select='@to'/>
 				</xsl:apply-templates>
 			</FlowsView>
+			<LinksView>
+				<xsl:apply-templates select='//Link' >
+					<xsl:sort select='../@name'/>
+					<xsl:sort select='@to'/>
+				</xsl:apply-templates>
+			</LinksView>
 		</ProcessFlow>				
 	</xsl:template>
 
@@ -132,6 +139,27 @@
 		<Flow id='{$id}' index='{position()}' name="{concat(@from, ' to ', ../@name)}" from="{generate-id($from-node)}" to="{$parent-id}" />
 	</xsl:template>
 
+	<xsl:template match='Link[@to]'>
+		<xsl:variable name='id' select='generate-id(.)'/>
+		<xsl:variable name='parent-id' select='generate-id(..)'/>
+		<xsl:variable name='to-node' select="key('node-by-name', @to)[1]"/>
+		<xsl:choose>
+			<xsl:when test='$to-node'>
+				<Link id='{$id}' index='{position()}' name="{concat(../@name, ' to ', @to)}" from="{$parent-id}" to="{generate-id($to-node)}" />
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- @to does not reference an area -->
+				<Link id='{$id}' index='{position()}' name="{concat(../@name, ' to ', @to)}" from="{$parent-id}" to="{@to}" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template match='Link[@from]'>
+		<xsl:variable name='id' select='generate-id(.)'/>
+		<xsl:variable name='parent-id' select='generate-id(..)'/>
+		<xsl:variable name='from-node' select="key('node-by-name', @from)[1]"/>
+		<Link id='{$id}' index='{position()}' name="{concat(@from, ' to ', ../@name)}" from="{generate-id($from-node)}" to="{$parent-id}" />
+	</xsl:template>
 	
 	<xsl:template match="*">
 		<xsl:copy>

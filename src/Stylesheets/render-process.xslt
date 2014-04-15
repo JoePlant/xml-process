@@ -28,6 +28,7 @@
 			<xsl:apply-templates select='WasteView' mode='link'/>
 			
 			<xsl:apply-templates select='FlowsView' mode='link'/>
+			<xsl:apply-templates select='LinksView' mode='link'/>
 		</dotml:graph>
 	</xsl:template>
 	
@@ -134,7 +135,14 @@
 	<xsl:template name='render-link'>
 		<xsl:variable name='node' select='.'/>
 		<xsl:comment><xsl:value-of select='name()'/>: <xsl:value-of select='@name'/></xsl:comment>
-		<dotml:edge from="{@from}" to="{@to}" color="{$link-color}" fontname="{$fontname}" fontcolor="{$link-color}" fontsize="{$font-size-h2}" />
+		<xsl:variable name='style'>
+			<xsl:choose>
+				<xsl:when test="name()='Flow'">solid</xsl:when>
+				<xsl:when test="name()='Link'">dotted</xsl:when>
+				<xsl:otherwise>dashed</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<dotml:edge from="{@from}" to="{@to}" color="{$link-color}" style="{$style}" fontname="{$fontname}" fontcolor="{$link-color}" fontsize="{$font-size-h2}" />
 	</xsl:template>
 
 </xsl:stylesheet>
