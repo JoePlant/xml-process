@@ -1,0 +1,31 @@
+<ProcessFlow>
+	<Area name='Mining'>
+		<Area name='Open Pit'>
+			<Input name='Ore'/>
+			<Flow to='Truck Fleet'/>
+		</Area>
+		<Area name='Truck Fleet'>
+			<Flow to='Primary Crusher'/>
+		</Area>
+	</Area>
+	<Area name='Crushing &amp; Grinding'>
+		<Area name='Primary Crusher'>
+			<Flow to='Coarse Ore Pile' />
+		</Area>
+		<Area name='Coarse Ore Pile'>
+			<Flow to='AG Mill'/>
+		</Area>
+		<Area name='AG Mill'>
+			<Flow to='Classifying Screen'/>
+			<Flow to='Concentration'/>
+		</Area>
+		<Area name='Classifying Screen'>
+			<Flow to='Pebble Crusher'/>
+		</Area>
+		<Area name='Pebble Crusher'>
+			<Flow to='AG Mill'/>
+		</Area>
+	</Area>
+	<Area name='Concentration'>
+	</Area>
+</ProcessFlow>
