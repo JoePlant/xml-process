@@ -1,4 +1,4 @@
-Gold Example
+Copper Example
 ===========
 
 An example showing the copper process
