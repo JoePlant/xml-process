@@ -12,6 +12,7 @@ call generate-core ..\doc\Examples\Waste\ProcessFlow.xml ..\doc\Examples\Waste\
 call generate-core ..\doc\Examples\Flow\ProcessFlow.xml ..\doc\Examples\Flow\
 call generate-core ..\doc\Examples\Link\ProcessFlow.xml ..\doc\Examples\Link\
 
+call generate-core ..\doc\Examples\Copper\ProcessFlow.xml ..\doc\Examples\Copper\
 call generate-core ..\doc\Examples\Gold\ProcessFlow.xml ..\doc\Examples\Gold\
 call generate-core ..\doc\Examples\Magnetite\ProcessFlow.xml ..\doc\Examples\Magnetite\
 call generate-core ..\doc\Examples\CrudeOil\ProcessFlow.xml ..\doc\Examples\CrudeOil\
