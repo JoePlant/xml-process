@@ -2,7 +2,6 @@
 	<Area name='Auxiliaries'>
 		<Consumable name='Water'/>
 		<Consumable name='Energy'/>
-		<Consumable name='Energy'/>
 		<Link to='Concentrator' />
 		<Link to='Smelter' />
 	</Area>
