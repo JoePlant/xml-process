@@ -10,22 +10,15 @@ if NOT EXIST %model% goto ERROR
 if NOT EXIST %output% goto ERROR
 
 if EXIST Working goto Working_exists
-mkdir Working
+mkdir %current%Working
 :Working_exists
-
-rem if EXIST %output%\Graphs goto graphs_exists
-rem mkdir %output%\Graphs
-rem :graphs_exists
-
-rem del Working\Graphs\*.* /Q
-rem del %output%\Graphs\*.* /Q
 
 set nxslt=..\lib\nxslt\nxslt.exe
 set graphviz=..\lib\GraphViz-2.30.1\bin
 set dotml=..\lib\dotml-1.4
 set xsltproc=..\lib\libxml\bin\xsltproc.exe 
 
-@echo === Model ===
+@echo === Model ======
 @echo Model = %model%
 %nxslt% %model% StyleSheets\generate-model.xslt -o Working\model.xml 
 
@@ -40,8 +33,10 @@ set xsltproc=..\lib\libxml\bin\xsltproc.exe
 %graphviz%\dot.exe -Tpng "Working\process-flow-tb.gv"  -o "%output%\process-top-flow.png"
 %graphviz%\dot.exe -Tpng "Working\process-flow-lr.gv"  -o "%output%\process-left-flow.png"
 
-@echo   Generated: %output%\process-top-flow.png
-@echo   Generated: %output%\process-left-flow.png
+@echo   Generated: %output%process-top-flow.png
+@echo   Generated: %output%process-left-flow.png
+
+@echo ================
 
 goto end
 
