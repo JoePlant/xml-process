@@ -34,6 +34,7 @@
 	
 	<xsl:template match='InputsView' mode='node'>
 		<xsl:if test='*'>
+			<xsl:comment>Inputs: </xsl:comment>
 			<dotml:sub-graph rank='source'>
 				<xsl:apply-templates select='*' mode='node'>
 					<xsl:with-param name='color' select='$input-color'/>
@@ -46,6 +47,7 @@
 
 	<xsl:template match='ConsumablesView' mode='node'>
 		<xsl:if test='*'>
+			<xsl:comment>Consumables: </xsl:comment>
 			<dotml:sub-graph rank='source'>
 				<xsl:apply-templates select='*' mode='node'>
 					<xsl:with-param name='color' select='$consumable-color'/>
@@ -58,6 +60,7 @@
 
 	<xsl:template match='WasteView' mode='node'>
 		<xsl:if test='*'>
+			<xsl:comment>Waste: </xsl:comment>
 			<dotml:sub-graph rank='sink'>
 				<xsl:apply-templates select='*' mode='node'>
 					<xsl:with-param name='color' select='$waste-color'/>
@@ -70,6 +73,7 @@
 
 	<xsl:template match='OutputsView' mode='node'>
 		<xsl:if test='*'>
+			<xsl:comment>Outputs: </xsl:comment>
 			<dotml:sub-graph rank='sink'>
 				<xsl:apply-templates select='*' mode='node'>
 					<xsl:with-param name='color' select='$output-color'/>
@@ -134,7 +138,13 @@
 
 	<xsl:template name='render-link'>
 		<xsl:variable name='node' select='.'/>
-		<xsl:comment><xsl:value-of select='name()'/>: <xsl:value-of select='@name'/></xsl:comment>
+		<xsl:comment><xsl:value-of select='name()'/>
+			<xsl:text>: </xsl:text>
+			<xsl:choose>
+				<xsl:when test='@name'><xsl:value-of select='@name'/></xsl:when>
+				<xsl:otherwise><xsl:value-of select="concat(name($node/..), ': ', $node/../@name)"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:comment>
 		<xsl:variable name='style'>
 			<xsl:choose>
 				<xsl:when test="name()='Flow'">solid</xsl:when>

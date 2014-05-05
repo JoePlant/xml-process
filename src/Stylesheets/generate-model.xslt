@@ -112,7 +112,7 @@
 				</Area>
 			</xsl:when>
 			<xsl:otherwise>
-				<Area id='{$id}' index='{position()}' name="{@name}" />
+				<WorkCentre id='{$id}' index='{position()}' name="{@name}" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
