@@ -1,30 +1,34 @@
 <ProcessFlow name='Copper'>
-	<Area name='Overburden Removal'>
-		<Waste name='Overburden'/>
-		<Flow to='Drilling'/>
-		<Flow to='Ore Removal'/>
+	<Area name='Mining'>
+		<Area name='Overburden Removal'>
+			<Waste name='Overburden'/>
+			<Flow to='Drilling'/>
+			<Flow to='Ore Removal'/>
+		</Area>
+		<Area name='Drilling'>
+			<Flow to='Blasting'/>
+		</Area>
+		<Area name='Blasting'>
+			<Flow to='Ore Removal'/>
+		</Area>
+		<Area name='Ore Removal'>
+			<Flow to='Loading'/>
+		</Area>
+		<Area name='Loading'>
+			<Flow to='Hauling &amp; Conveying'/>
+		</Area>
+		<Area name='Hauling &amp; Conveying'>
+			<Waste name='Spent Ore'/>
+			<Flow to='Crushing'/>
+		</Area>
 	</Area>
-	<Area name='Drilling'>
-		<Flow to='Blasting'/>
-	</Area>
-	<Area name='Blasting'>
-		<Flow to='Ore Removal'/>
-	</Area>
-	<Area name='Ore Removal'>
-		<Flow to='Loading'/>
-	</Area>
-	<Area name='Loading'>
-		<Flow to='Hauling &amp; Conveying'/>
-	</Area>
-	<Area name='Hauling &amp; Conveying'>
-		<Waste name='Spent Ore'/>
-		<Flow to='Crushing'/>
-	</Area>
-	<Area name='Crushing'>
-		<Flow to='Grinding'/>
-	</Area>
-	<Area name='Grinding'>
-		<Flow to='Flotation'/>
+	<Area name='Crushing &amp; Grinding'>
+		<Area name='Crushing'>
+			<Flow to='Grinding'/>
+		</Area>
+		<Area name='Grinding'>
+			<Flow to='Flotation'/>
+		</Area>
 	</Area>
 	<Area name='Flotation'>
 		<Consumable name='Water'/>
@@ -34,81 +38,48 @@
 		<Flow to='Furnacing/Smelting'/>
 	</Area>
 	<!-- Smelting -->
-	<Area name='Furnacing/Smelting'>
-		<Waste name='Discarded Furnace\nand Converter Bricks'/>
-		<Waste name='APC Dust'/>
-		<Waste name='Waste Water'/>
-		<Flow to='Cooling'/>
-		<Flow to='Conversion'/>
-		<Flow to='Scrubbing'/>
-	</Area>
-	<Area name='Cooling'>
-		<Flow to='Crushing'/>
-	</Area>
-	<Area name='Conversion'>
-		<Flow to='Fire Refining\nAnode Furnace'/>
-	</Area>
-	<Area name='Fire Refining\nAnode Furnace'>
-		<Waste name='Discarded Furnace\nand Converter Bricks'/>
-		<Flow to='Electrolytic\nRefining'/>
-	</Area>
-	<Area name='Electrolytic\nRefining'>
-		<Flow to='Precious Metal Recovery'/>
-		<Output name='Refined Copper Metal'/>
-		<Flow to='Wastewater Treatment'/>
-		<Flow to='Liberator'/>
-	</Area>
-	<Area name='Liberator'>
-		<Waste name='Black Acid' />
-	</Area>
-	<Area name='Precious Metal Recovery'>
-		<Output name='Dore Metal'/>
-	</Area>
-	<Area name='Scrubbing'>
-		<Flow to='Acid Production'/>
-	</Area>
-	<Area name='Acid Production'>
-		<Waste name='Acid'/>
-		<Waste name='Gases to Atmosphere'/>
-		<Waste name='Acid Plant Blowdown'/>
-		<Flow to='Wastewater Treatment' />
-	</Area>
-	<Area name='Wastewater Treatment'>
-		<Waste name='Effluents'/>
-	</Area>
-	<!-- End Smelting -->	
-	<!--
-Electricity 
-Fuels 
-Explosives 
-SulfuricAcid Solution 
-Water 
-Reagents 
-Chelator 
-Organic Solvent 
-
-Copper Ore 
-Copper Concentrates 
-Copper Anodes 
-Blister Copper 
-Sheet/wire/rod Copper 
-Mineral Co-products 
-Spent Ore 
-Overburden 
-Tailings 
-Slimes 
-Discarded Furnace Bricks 
-Discarded Converter Bricks 
-APC Dust
-Waste Water
-Spent Electrolytes 
-Anode Slimes
-Acid 
-Gases 
-Acid Plant Blowdown 
-Effluents 
-Crud
-Copper Slags
--->
-	
+	<Area name='Smelting'>
+		<Area name='Furnacing/Smelting'>
+			<Waste name='Discarded Furnace\nand Converter Bricks'/>
+			<Waste name='APC Dust'/>
+			<Waste name='Waste Water'/>
+			<Flow to='Cooling'/>
+			<Flow to='Conversion'/>
+			<Flow to='Scrubbing'/>
+		</Area>
+		<Area name='Cooling'>
+			<Flow to='Crushing'/>
+		</Area>
+		<Area name='Conversion'>
+			<Flow to='Fire Refining\nAnode Furnace'/>
+		</Area>
+		<Area name='Fire Refining\nAnode Furnace'>
+			<Waste name='Discarded Furnace\nand Converter Bricks'/>
+			<Flow to='Electrolytic\nRefining'/>
+		</Area>
+		<Area name='Electrolytic\nRefining'>
+			<Flow to='Precious Metal Recovery'/>
+			<Output name='Refined Copper Metal'/>
+			<Flow to='Wastewater Treatment'/>
+			<Flow to='Liberator'/>
+		</Area>
+		<Area name='Liberator'>
+			<Waste name='Black Acid' />
+		</Area>
+		<Area name='Precious Metal Recovery'>
+			<Output name='Dore Metal'/>
+		</Area>
+		<Area name='Scrubbing'>
+			<Flow to='Acid Production'/>
+		</Area>
+		<Area name='Acid Production'>
+			<Waste name='Acid'/>
+			<Waste name='Gases to Atmosphere'/>
+			<Waste name='Acid Plant Blowdown'/>
+			<Flow to='Wastewater Treatment' />
+		</Area>
+		<Area name='Wastewater Treatment'>
+			<Waste name='Effluents'/>
+		</Area>
+	</Area>	
 </ProcessFlow>
