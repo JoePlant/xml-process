@@ -1,0 +1,25 @@
+<ProcessFlow name='Copper'>
+	<Area name='ROM'>
+		<Flow to='Primary Mill'/>
+	</Area>
+	<Area name='Primary Mill'>
+		<Flow to='Secondary Mills'/>
+	</Area>
+	<Area name='Secondary Mills'>
+		<Flow to='Rougher'/>
+	</Area>
+	<Area name='Flotation'>
+		<Area name='Rougher'>
+			<Flow to='Scavenger'/>
+			<Flow to='Cleaner'/>
+		</Area>
+		<Area name='Scavenger'>
+			<Flow to='Rougher'/>
+			<Waste name='Tails'/>
+		</Area>
+		<Area name='Cleaner'>
+			<Flow to='Rougher'/>
+			<Output name='Copper Concentrate'/>
+		</Area>
+	</Area>
+</ProcessFlow>

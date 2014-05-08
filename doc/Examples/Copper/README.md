@@ -8,3 +8,12 @@ Source: [Chapter 5](http://energy.gov/sites/prod/files/2013/11/f4/copper.pdf) fr
 ![Process Flow Output](./process-top-flow.png)
 
 Xml: [Source](./ProcessFlow.xml) 
+
+[Simple Copper](./Simple/) Example
+====
+
+####Process flow diagram
+![Process Flow Output](./Simple/process-top-flow.png)
+
+Xml: [Source](./Simple/ProcessFlow.xml) 
+
